@@ -1,0 +1,7 @@
+*.css
+*.svg
+react-app-env.d.ts
+reportWebVitals.ts
+setupTests.ts
+node_modules
+dist
