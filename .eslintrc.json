@@ -17,13 +17,8 @@
         "react"
     ],
     "rules": {
-        "max-len": [
-            "warn",
-            {
-                "code": 80
-            }
-        ],
-        "no-console": "error",
+        "@typescript-eslint/no-unused-vars": "off",
+        // "no-console": "error",
         "arrow-body-style": [
             "error",
             "as-needed"
