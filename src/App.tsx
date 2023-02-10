@@ -1,10 +1,16 @@
 import React from 'react'
-import Login from './modules/login/Login'
+import LoginModule from './modules/login/LoginModule'
+import SignupModule from './modules/signup/SignupModule'
 
 const App: React.FunctionComponent = () => (
     <div className="App">
       <header className="App-header">
-        <Login />
+        <LoginModule />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <SignupModule />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

@@ -18,10 +18,17 @@
     ],
     "rules": {
         "@typescript-eslint/no-unused-vars": "off",
-        // "no-console": "error",
         "arrow-body-style": [
             "error",
             "as-needed"
+        ],
+        "@typescript-eslint/no-misused-promises": [
+            2,
+            {
+                "checksVoidReturn": {
+                    "attributes": false
+                }
+            }
         ],
         "react/self-closing-comp": [
             "error",
