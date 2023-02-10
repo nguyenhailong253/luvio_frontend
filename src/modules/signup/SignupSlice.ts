@@ -1,31 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../../store'
+import type { RootState } from '../../redux/store'
+import type { SignupAction, SignupState } from './types'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-// Define a type for the slice state
-interface SignupState {
-  username: string
-  password: string
-}
 
 // Define the initial state using that type
 const initialState: SignupState = {
-  username: '',
-  password: ''
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  mobile: '',
+  isActive: false
 }
 
 const signupSlice = createSlice({
   name: 'signup',
   initialState,
   reducers: {
-    submit: (state, action: PayloadAction<SignupState>) => {
-      state.username = action.payload.username
-      state.password = action.payload.password
+    saveSignupDetails: (state, action: PayloadAction<SignupAction>) => {
+      state.firstName = action.payload.firstName
+      state.lastName = action.payload.lastName
+      state.dateOfBirth = action.payload.dateOfBirth
+      state.mobile = action.payload.mobile
+      state.isActive = action.payload.isActive
     }
   }
 })
-export const { submit } = signupSlice.actions
-// Other code such as selectors can use the imported `RootState` type
-export const selectUsername = (state: RootState): string => state.signup.username
+export const { saveSignupDetails } = signupSlice.actions
 
 export default signupSlice.reducer
