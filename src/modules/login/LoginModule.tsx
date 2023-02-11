@@ -6,9 +6,9 @@ import { saveLoginDetails } from './loginSlice'
 
 const LoginModule: React.FunctionComponent = () => {
   const dispatch = useAppDispatch()
-  const [username, setUserName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUserName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
   const [submit, { isLoading, isSuccess, error, isError }] = useSubmitMutation()
 
   const onSubmitClicked = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {

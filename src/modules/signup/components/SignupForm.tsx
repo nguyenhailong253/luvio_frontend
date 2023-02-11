@@ -11,9 +11,15 @@ import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import React from 'react'
+import DATE_FORMAT from '../../../common/constants'
 import Copyright from '../../../components/Copyright'
+import MobilePhoneInput from '../../../components/MobilePhoneInput'
 import type { SignupFormProps } from '../types'
+import type { Dayjs } from 'dayjs'
 
 const theme = createTheme()
 
@@ -115,26 +121,20 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  name="mobile"
-                  label="Mobile"
-                  id="mobile"
-                  autoComplete="mobile-number"
-                  value={mobile}
-                  onChange={e => { setMobile(e.target.value) }}
-                />
+                <MobilePhoneInput mobilevalue={mobile} onMobileValueChange={value => { setMobile(value) }} />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  name="dob"
-                  label="Date of Birth"
-                  id="dob"
-                  autoComplete="date-of-birth"
-                  value={dateOfBirth}
-                  onChange={e => { setDateOfBirth(e.target.value) }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    label="Date of Birth"
+                    value={dateOfBirth}
+                    onChange={(newDate: Dayjs | null) => {
+                      setDateOfBirth(newDate)
+                    }}
+                    inputFormat={DATE_FORMAT}
+                    renderInput={(params: any) => <TextField {...params} fullWidth/>}
+                  />
+                </LocalizationProvider>
               </Grid>
             </Grid>
             <Button

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../../redux/store'
 import type { SignupAction, SignupState } from './types'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
@@ -7,7 +6,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 const initialState: SignupState = {
   firstName: '',
   lastName: '',
-  dateOfBirth: '',
+  dateOfBirth: null,
   mobile: '',
   isActive: false
 }
