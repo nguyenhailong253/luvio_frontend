@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import React from 'react'
-import Copyright from './Copyright'
+import Copyright from '../../../components/Copyright'
 import type { LoginFormProps } from '../types'
 
 const theme = createTheme()

@@ -6,11 +6,11 @@ const App: React.FunctionComponent = () => (
     <div className="App">
       <header className="App-header">
         <LoginModule />
-        {/* <br/>
         <br/>
         <br/>
-        <br/> */}
-        {/* <SignupModule /> */}
+        <br/>
+        <br/>
+        <SignupModule />
 
       </header>
     </div>
