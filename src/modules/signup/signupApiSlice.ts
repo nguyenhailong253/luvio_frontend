@@ -1,3 +1,4 @@
+import DATE_FORMAT from '../../common/constants'
 import apiSlice from '../../redux/apiSlice'
 import type { SignupResponse } from './types'
 
@@ -13,7 +14,7 @@ export const signupApiSlice = apiSlice.injectEndpoints({
           password: signupDetails.password,
           first_name: signupDetails.firstName,
           last_name: signupDetails.lastName,
-          date_of_birth: signupDetails.dateOfBirth,
+          date_of_birth: signupDetails.dateOfBirth?.format(DATE_FORMAT),
           mobile: signupDetails.mobile,
           is_active: signupDetails.isActive
         }

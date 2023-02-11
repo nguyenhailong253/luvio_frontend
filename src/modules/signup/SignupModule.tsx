@@ -4,17 +4,18 @@ import { saveLoginDetails } from '../login/loginSlice'
 import SignupForm from './components/SignupForm'
 import { useSubmitMutation } from './signupApiSlice'
 import { saveSignupDetails } from './signupSlice'
+import type { Dayjs } from 'dayjs'
 
 const SignupModule: React.FunctionComponent = () => {
   const dispatch = useAppDispatch()
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [retypedPassword, setRetypedPassword] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [dateOfBirth, setDateOfBirth] = useState('')
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [retypedPassword, setRetypedPassword] = useState<string>('')
+  const [firstName, setFirstName] = useState<string>('')
+  const [lastName, setLastName] = useState<string>('')
+  const [mobile, setMobile] = useState<string>('')
+  const [dateOfBirth, setDateOfBirth] = useState<Dayjs | null>(null)
 
   const [submit, { isLoading, isSuccess, error, isError }] = useSubmitMutation()
 

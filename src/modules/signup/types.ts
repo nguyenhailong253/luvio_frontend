@@ -1,8 +1,9 @@
+import type { Dayjs } from 'dayjs'
 import type { SetStateAction } from 'react'
 export interface SignupState {
   firstName: string
   lastName: string
-  dateOfBirth: string
+  dateOfBirth: Dayjs | null
   mobile: string
   isActive: boolean
 }
@@ -10,7 +11,7 @@ export interface SignupState {
 export interface SignupAction {
   firstName: string
   lastName: string
-  dateOfBirth: string
+  dateOfBirth: Dayjs | null
   mobile: string
   isActive: boolean
 }
@@ -30,7 +31,7 @@ export interface SignupFormProps {
   retypedPassword: string
   firstName: string
   lastName: string
-  dateOfBirth: string
+  dateOfBirth: Dayjs | null
   mobile: string
   setUsername: (value: SetStateAction<string>) => void
   setEmail: (value: SetStateAction<string>) => void
@@ -38,6 +39,6 @@ export interface SignupFormProps {
   setRetypedPassword: (value: SetStateAction<string>) => void
   setFirstName: (value: SetStateAction<string>) => void
   setLastName: (value: SetStateAction<string>) => void
-  setDateOfBirth: (value: SetStateAction<string>) => void
+  setDateOfBirth: (value: SetStateAction<Dayjs | null>) => void
   setMobile: (value: SetStateAction<string>) => void
 }
