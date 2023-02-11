@@ -6,22 +6,12 @@ const App: React.FunctionComponent = () => (
     <div className="App">
       <header className="App-header">
         <LoginModule />
+        {/* <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        <SignupModule />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <br/> */}
+        {/* <SignupModule /> */}
+
       </header>
     </div>
 )

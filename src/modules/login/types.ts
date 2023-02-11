@@ -1,3 +1,5 @@
+import type { SetStateAction } from 'react'
+
 export interface LoginState {
   username: string
   email: string
@@ -18,4 +20,12 @@ export interface LoginResponse {
   username: string
   email: string
   user_id: number
+}
+
+export interface LoginFormProps {
+  onSubmitClicked: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
+  email: string
+  password: string
+  setEmail: (value: SetStateAction<string>) => void
+  setPassword: (value: SetStateAction<string>) => void
 }
