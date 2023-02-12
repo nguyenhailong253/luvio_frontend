@@ -7,6 +7,11 @@ export interface SignupResponse {
   username: string
   email: string
   user_id: NumberNullish
+  first_name: string
+  last_name: string
+  date_of_birth: Dayjs | Nullish
+  mobile: string
+  is_active: boolean
 }
 
 export interface SignupVariableProps {

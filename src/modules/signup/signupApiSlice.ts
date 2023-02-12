@@ -19,11 +19,17 @@ export const signupApiSlice = apiSlice.injectEndpoints({
           is_active: details.isActive
         }
       }),
-      transformResponse: (responseData: SignupResponse) => ({
-        username: responseData.username,
-        token: responseData.token,
-        email: responseData.email,
-        userId: responseData.user_id
+      transformResponse: (response: SignupResponse) => ({
+        username: response.username,
+        token: response.token,
+        email: response.email,
+        userId: response.user_id,
+        firstName: response.first_name,
+        lastName: response.last_name,
+        dateOfBirth: response.date_of_birth,
+        mobile: response.mobile,
+        isActive: response.is_active,
+        isLoggedIn: true
       })
     })
   })
