@@ -20,6 +20,71 @@ const theme = createTheme()
 const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
   const { variables, onSubmitClicked, setEmail, setPassword } = props
   const { email, password } = variables
+
+  const emailComponent = (
+    <TextField
+      margin="normal"
+      required
+      fullWidth
+      id="email"
+      label="Email Address"
+      name="email"
+      autoComplete="email"
+      autoFocus
+      value={email}
+      onChange={e => { setEmail(e.target.value) }}
+    />
+  )
+
+  const passwordComponent = (
+    <TextField
+      margin="normal"
+      required
+      fullWidth
+      name="password"
+      label="Password"
+      type="password"
+      id="password"
+      autoComplete="current-password"
+      value={password}
+      onChange={e => { setPassword(e.target.value) }}
+    />
+  )
+
+  const rememberMe = (
+    <FormControlLabel
+      control={<Checkbox value="remember" color="primary" />}
+      label="Remember me"
+    />
+  )
+
+  const loginButton = (
+    <Button
+      type="submit"
+      fullWidth
+      variant="contained"
+      sx={{ mt: 3, mb: 2 }}
+    >
+              Log In
+    </Button>
+  )
+
+  const forgotPwd = (
+    <Grid item xs>
+      <Link href="#" variant="body2">
+                  Forgot password?
+      </Link>
+    </Grid>
+  )
+
+  const signup = (
+    <Grid item>
+      <Link href="#" variant="body2">
+        {"Don't have an account? Sign Up"}
+      </Link>
+    </Grid>
+  )
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -39,53 +104,13 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
             Log in
           </Typography>
           <Box component="form" onSubmit={onSubmitClicked} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={e => { setEmail(e.target.value) }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={e => { setPassword(e.target.value) }}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Log In
-            </Button>
+            {emailComponent}
+            {passwordComponent}
+            {rememberMe}
+            {loginButton}
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+              {forgotPwd}
+              {signup}
             </Grid>
           </Box>
         </Box>
