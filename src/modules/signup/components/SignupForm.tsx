@@ -48,6 +48,142 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
     mobile
   } = variables
 
+  const firstNameComponent = (
+    <Grid item xs={12} sm={6}>
+      <TextField
+        autoComplete="given-name"
+        name="firstName"
+        required
+        fullWidth
+        id="firstName"
+        label="First Name"
+        autoFocus
+        value={firstName}
+        onChange={e => { setFirstName(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const lastNameComponent = (
+    <Grid item xs={12} sm={6}>
+      <TextField
+        required
+        fullWidth
+        id="lastName"
+        label="Last Name"
+        name="lastName"
+        autoComplete="family-name"
+        value={lastName}
+        onChange={e => { setLastName(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const usernameComponent = (
+    <Grid item xs={12}>
+      <TextField
+        required
+        fullWidth
+        id="username"
+        label="Username"
+        name="username"
+        autoComplete="username"
+        value={username}
+        onChange={e => { setUsername(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const emailComponent = (
+    <Grid item xs={12}>
+      <TextField
+        required
+        fullWidth
+        id="email"
+        label="Email Address"
+        name="email"
+        autoComplete="email"
+        value={email}
+        onChange={e => { setEmail(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const passwordComponent = (
+    <Grid item xs={12}>
+      <TextField
+        required
+        fullWidth
+        name="password"
+        label="Password"
+        type="password"
+        id="password"
+        autoComplete="new-password"
+        value={password}
+        onChange={e => { setPassword(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const retypedPwdComponent = (
+    <Grid item xs={12}>
+      <TextField
+        required
+        fullWidth
+        name="retyped-password"
+        label="Re-type Password"
+        type="password"
+        id="retyped-password"
+        autoComplete="new-password"
+        value={retypedPassword}
+        onChange={e => { setRetypedPassword(e.target.value) }}
+      />
+    </Grid>
+  )
+
+  const mobilePhoneComponent = (
+    <Grid item xs={12}>
+      <MobilePhoneInput mobilevalue={mobile} onMobileValueChange={value => { setMobile(value) }} />
+    </Grid>
+  )
+
+  const dobComponent = (
+    <Grid item xs={12}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          label="Date of Birth"
+          value={dateOfBirth}
+          onChange={(newDate: Dayjs | Nullish) => {
+            setDateOfBirth(newDate)
+          }}
+          inputFormat={DATE_FORMAT}
+          renderInput={(params: any) => <TextField {...params} fullWidth/>}
+        />
+      </LocalizationProvider>
+    </Grid>
+  )
+
+  const signupButton = (
+    <Button
+      type="submit"
+      fullWidth
+      variant="contained"
+      sx={{ mt: 3, mb: 2 }}
+    >
+              Sign Up
+    </Button>
+  )
+
+  const alreadyHaveAnAccount = (
+    <Grid container justifyContent="center">
+      <Grid item>
+        <Link href="#" variant="body2">
+                  Already have an account? Sign in
+        </Link>
+      </Grid>
+    </Grid>
+  )
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -68,113 +204,17 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
           </Typography>
           <Box component="form" noValidate onSubmit={onSubmitClicked} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                  value={firstName}
-                  onChange={e => { setFirstName(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                  value={lastName}
-                  onChange={e => { setLastName(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="username"
-                  label="Username"
-                  name="username"
-                  autoComplete="username"
-                  value={username}
-                  onChange={e => { setUsername(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={e => { setEmail(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={e => { setPassword(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="retyped-password"
-                  label="Re-type Password"
-                  type="password"
-                  id="retyped-password"
-                  autoComplete="new-password"
-                  value={retypedPassword}
-                  onChange={e => { setRetypedPassword(e.target.value) }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <MobilePhoneInput mobilevalue={mobile} onMobileValueChange={value => { setMobile(value) }} />
-              </Grid>
-              <Grid item xs={12}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    label="Date of Birth"
-                    value={dateOfBirth}
-                    onChange={(newDate: Dayjs | Nullish) => {
-                      setDateOfBirth(newDate)
-                    }}
-                    inputFormat={DATE_FORMAT}
-                    renderInput={(params: any) => <TextField {...params} fullWidth/>}
-                  />
-                </LocalizationProvider>
-              </Grid>
+              {firstNameComponent}
+              {lastNameComponent}
+              {usernameComponent}
+              {emailComponent}
+              {passwordComponent}
+              {retypedPwdComponent}
+              {mobilePhoneComponent}
+              {dobComponent}
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
+            {signupButton}
+            {alreadyHaveAnAccount}
           </Box>
         </Box>
         <Copyright />
