@@ -33,15 +33,7 @@ const SignupModule: React.FunctionComponent = () => {
         mobile,
         isActive
       }).unwrap()
-    dispatch(saveLoggedInUserDetails({
-      firstName,
-      lastName,
-      dateOfBirth,
-      mobile,
-      isActive,
-      isLoggedIn: true,
-      ...response
-    }))
+    dispatch(saveLoggedInUserDetails({ ...response }))
   }
 
   return (

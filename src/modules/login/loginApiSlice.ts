@@ -18,7 +18,7 @@ export const loginApiSlice = apiSlice.injectEndpoints({
         lastName: response.last_name,
         dateOfBirth: response.date_of_birth,
         mobile: response.mobile,
-        isActive: response.isActive,
+        isActive: response.is_active,
         isLoggedIn: true
       })
     })

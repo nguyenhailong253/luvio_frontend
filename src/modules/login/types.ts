@@ -11,8 +11,7 @@ export interface LoginResponse {
   last_name: string
   date_of_birth: Dayjs | Nullish
   mobile: string
-  isActive: boolean
-  isLoggedIn: boolean
+  is_active: boolean
 }
 
 export interface LoginVariableProps {
