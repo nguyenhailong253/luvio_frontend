@@ -1,31 +1,28 @@
+import type { Nullish, NumberNullish } from '../../common/types'
+import type { Dayjs } from 'dayjs'
 import type { SetStateAction } from 'react'
-
-export interface LoginState {
-  username: string
-  email: string
-  isLoggedIn: boolean
-  userId: number | null
-  token: string | null
-}
-
-export interface LoginAction {
-  username: string
-  email: string
-  token: string
-  userId: number
-}
 
 export interface LoginResponse {
   token: string
   username: string
   email: string
-  user_id: number
+  user_id: NumberNullish
+  first_name: string
+  last_name: string
+  date_of_birth: Dayjs | Nullish
+  mobile: string
+  isActive: boolean
+  isLoggedIn: boolean
+}
+
+export interface LoginVariableProps {
+  email: string
+  password: string
 }
 
 export interface LoginFormProps {
   onSubmitClicked: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
-  email: string
-  password: string
+  variables: LoginVariableProps
   setEmail: (value: SetStateAction<string>) => void
   setPassword: (value: SetStateAction<string>) => void
 }
