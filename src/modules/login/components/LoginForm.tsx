@@ -1,4 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Alert from '@mui/material/Alert'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -20,7 +21,15 @@ const theme = createTheme()
 
 const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
   const { variables, onSubmitClicked, setEmail, setPassword } = props
-  const { email, password } = variables
+  const { email, password, errorMsg } = variables
+
+  const errorAlert = errorMsg !== '' && (
+    <Grid item xs={12}>
+      <Alert variant="outlined" severity="error" sx={{ mt: 2 }}>
+        {errorMsg}
+      </Alert>
+    </Grid>
+  )
 
   const emailComponent = (
     <Grid item xs={12}>
@@ -106,6 +115,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
           </Typography>
           <Box component="form" onSubmit={onSubmitClicked} noValidate sx={{ mt: 1 }}>
             <Grid container spacing={2}>
+              {errorAlert}
               {emailComponent}
               {passwordComponent}
               {rememberMe}

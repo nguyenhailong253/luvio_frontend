@@ -17,6 +17,7 @@ export interface LoginResponse {
 export interface LoginVariableProps {
   email: string
   password: string
+  errorMsg: string
 }
 
 export interface LoginFormProps {
