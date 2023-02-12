@@ -4,19 +4,19 @@ import type { SignupResponse } from './types'
 
 export const signupApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    submit: builder.mutation({
-      query: (signupDetails) => ({
+    register: builder.mutation({
+      query: (details) => ({
         url: '/registration/',
         method: 'POST',
         body: {
-          email: signupDetails.email,
-          username: signupDetails.username,
-          password: signupDetails.password,
-          first_name: signupDetails.firstName,
-          last_name: signupDetails.lastName,
-          date_of_birth: signupDetails.dateOfBirth?.format(DATE_FORMAT),
-          mobile: signupDetails.mobile,
-          is_active: signupDetails.isActive
+          email: details.email,
+          username: details.username,
+          password: details.password,
+          first_name: details.firstName,
+          last_name: details.lastName,
+          date_of_birth: details.dateOfBirth?.format(DATE_FORMAT),
+          mobile: details.mobile,
+          is_active: details.isActive
         }
       }),
       transformResponse: (responseData: SignupResponse) => ({
@@ -29,4 +29,4 @@ export const signupApiSlice = apiSlice.injectEndpoints({
   })
 })
 
-export const { useSubmitMutation } = signupApiSlice
+export const { useRegisterMutation } = signupApiSlice

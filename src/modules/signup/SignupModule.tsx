@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { saveLoginDetails } from '../login/loginSlice'
+import { useAppDispatch } from '../../redux/hooks'
+import { saveLoggedInUserDetails } from '../user/userSlice'
 import SignupForm from './components/SignupForm'
-import { useSubmitMutation } from './signupApiSlice'
-import { saveSignupDetails } from './signupSlice'
-import type { Nullish } from '../../common/types'
+import { useRegisterMutation } from './signupApiSlice'
+import type { FormEvent, Nullish } from '../../common/types'
 import type { Dayjs } from 'dayjs'
 
 const SignupModule: React.FunctionComponent = () => {
@@ -18,12 +17,12 @@ const SignupModule: React.FunctionComponent = () => {
   const [mobile, setMobile] = useState<string>('')
   const [dateOfBirth, setDateOfBirth] = useState<Dayjs | Nullish>()
 
-  const [submit, { isLoading, isSuccess, error, isError }] = useSubmitMutation()
+  const [register, { isLoading, isSuccess, error, isError }] = useRegisterMutation()
 
-  const onSubmitClicked = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const onSubmitClicked = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
     const isActive = true
-    const respone = await submit(
+    const response = await register(
       {
         username,
         email,
@@ -34,8 +33,15 @@ const SignupModule: React.FunctionComponent = () => {
         mobile,
         isActive
       }).unwrap()
-    dispatch(saveLoginDetails({ ...respone }))
-    dispatch(saveSignupDetails({ firstName, lastName, dateOfBirth, mobile, isActive }))
+    dispatch(saveLoggedInUserDetails({
+      firstName,
+      lastName,
+      dateOfBirth,
+      mobile,
+      isActive,
+      isLoggedIn: true,
+      ...response
+    }))
   }
 
   return (

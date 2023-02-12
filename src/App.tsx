@@ -6,14 +6,14 @@ import SignupModule from './modules/signup/SignupModule'
 import store from './redux/store'
 
 const App: React.FunctionComponent = () => (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginModule />}/>
-          <Route path="/signup" element={<SignupModule />}/>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginModule />}/>
+        <Route path="/signup" element={<SignupModule />}/>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 )
 
 export default App
