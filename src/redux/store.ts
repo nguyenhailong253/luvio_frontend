@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import loginReducer from '../modules/login/loginSlice'
+import signupReducer from '../modules/signup/signupSlice'
+import userReducer from '../modules/user/userSlice'
 import apiSlice from './apiSlice'
 
 import type { ThunkAction, AnyAction } from '@reduxjs/toolkit'
@@ -7,7 +9,9 @@ import type { ThunkAction, AnyAction } from '@reduxjs/toolkit'
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    login: loginReducer
+    login: loginReducer,
+    signup: signupReducer,
+    user: userReducer
     // signup: signupReducer
   },
   middleware: (getDefaultMiddleware) =>

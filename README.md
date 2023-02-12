@@ -30,3 +30,7 @@ Because we can't import `store` to any other files, we can't directly call `stor
 Global state that is needed across the app should go in the Redux store. State that's only needed in one place should be kept in React component's state.
 
 [Redux App Structure](https://redux.js.org/tutorials/essentials/part-2-app-structure)
+
+
+## Null and undefined
+- See [image](https://stackoverflow.com/a/57249968/8749888)

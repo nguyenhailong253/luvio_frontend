@@ -6,7 +6,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 const initialState: SignupState = {
   firstName: '',
   lastName: '',
-  dateOfBirth: null,
+  dateOfBirth: undefined,
   mobile: '',
   isActive: false
 }

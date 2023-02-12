@@ -18,13 +18,36 @@ import React from 'react'
 import DATE_FORMAT from '../../../common/constants'
 import Copyright from '../../../components/Copyright'
 import MobilePhoneInput from '../../../components/MobilePhoneInput'
+import type { Nullish } from '../../../common/types'
 import type { SignupFormProps } from '../types'
 import type { Dayjs } from 'dayjs'
 
 const theme = createTheme()
 
 const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
-  const { onSubmitClicked, username, email, password, retypedPassword, firstName, lastName, dateOfBirth, mobile, setUsername, setEmail, setPassword, setRetypedPassword, setFirstName, setLastName, setDateOfBirth, setMobile } = props
+  const {
+    variables,
+    onSubmitClicked,
+    setUsername,
+    setEmail,
+    setPassword,
+    setRetypedPassword,
+    setFirstName,
+    setLastName,
+    setDateOfBirth,
+    setMobile
+  } = props
+  const {
+    username,
+    email,
+    password,
+    retypedPassword,
+    firstName,
+    lastName,
+    dateOfBirth,
+    mobile
+  } = variables
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -128,7 +151,7 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
                   <DatePicker
                     label="Date of Birth"
                     value={dateOfBirth}
-                    onChange={(newDate: Dayjs | null) => {
+                    onChange={(newDate: Dayjs | Nullish) => {
                       setDateOfBirth(newDate)
                     }}
                     inputFormat={DATE_FORMAT}

@@ -1,6 +1,5 @@
 import {
-  MuiTelInput,
-  matchIsValidTel
+  MuiTelInput
 } from 'mui-tel-input'
 import React from 'react'
 import type {
