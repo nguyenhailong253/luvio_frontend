@@ -120,9 +120,12 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
     </Grid>
   )
 
+  const retypedPwdNotMatched = retypedPassword !== '' && password !== retypedPassword
   const retypedPwdComponent = (
     <Grid item xs={12}>
       <TextField
+        error={retypedPwdNotMatched}
+        helperText={retypedPwdNotMatched && 'Password does not match.'}
         required
         fullWidth
         name="retyped-password"
@@ -165,7 +168,7 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
       variant="contained"
       sx={{ mt: 3, mb: 2 }}
     >
-              Sign Up
+      Sign Up
     </Button>
   )
 
@@ -173,7 +176,7 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
     <Grid container justifyContent="center">
       <Grid item>
         <Link href="#" variant="body2">
-                  Already have an account? Sign in
+          Already have an account? Sign in
         </Link>
       </Grid>
     </Grid>
