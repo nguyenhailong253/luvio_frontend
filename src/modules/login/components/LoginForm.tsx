@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import Copyright from '../../../components/Copyright'
+import EmailInput from '../../../components/EmailInput'
 import type { LoginFormProps } from '../types'
 
 const theme = createTheme()
@@ -22,57 +23,57 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
   const { email, password } = variables
 
   const emailComponent = (
-    <TextField
-      margin="normal"
-      required
-      fullWidth
-      id="email"
-      label="Email Address"
-      name="email"
-      autoComplete="email"
-      autoFocus
-      value={email}
-      onChange={e => { setEmail(e.target.value) }}
-    />
+    <Grid item xs={12}>
+      <EmailInput
+        email={email}
+        onEmailChange={setEmail}
+        autoFocus={true}
+      />
+    </Grid>
   )
 
   const passwordComponent = (
-    <TextField
-      margin="normal"
-      required
-      fullWidth
-      name="password"
-      label="Password"
-      type="password"
-      id="password"
-      autoComplete="current-password"
-      value={password}
-      onChange={e => { setPassword(e.target.value) }}
-    />
+    <Grid item xs={12}>
+      <TextField
+        required
+        fullWidth
+        name="password"
+        label="Password"
+        type="password"
+        id="password"
+        autoComplete="current-password"
+        value={password}
+        onChange={e => { setPassword(e.target.value) }}
+      />
+    </Grid>
   )
 
   const rememberMe = (
-    <FormControlLabel
-      control={<Checkbox value="remember" color="primary" />}
-      label="Remember me"
-    />
+    <Grid item xs={12}>
+      <FormControlLabel
+        control={<Checkbox value="remember" color="primary" />}
+        label="Remember me"
+      />
+    </Grid>
   )
 
   const loginButton = (
-    <Button
-      type="submit"
-      fullWidth
-      variant="contained"
-      sx={{ mt: 3, mb: 2 }}
-    >
-              Log In
-    </Button>
+    <Grid item xs={12}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mb: 2 }}
+      >
+      Log In
+      </Button>
+    </Grid>
   )
 
   const forgotPwd = (
     <Grid item xs>
       <Link href="#" variant="body2">
-                  Forgot password?
+        Forgot password?
       </Link>
     </Grid>
   )
@@ -104,10 +105,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
             Log in
           </Typography>
           <Box component="form" onSubmit={onSubmitClicked} noValidate sx={{ mt: 1 }}>
-            {emailComponent}
-            {passwordComponent}
-            {rememberMe}
-            {loginButton}
+            <Grid container spacing={2}>
+              {emailComponent}
+              {passwordComponent}
+              {rememberMe}
+              {loginButton}
+            </Grid>
             <Grid container>
               {forgotPwd}
               {signup}

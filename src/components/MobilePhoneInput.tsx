@@ -17,7 +17,6 @@ interface MobilePhoneInputPropsType {
 const MobilePhoneInput: React.FunctionComponent<MobilePhoneInputPropsType> = (props) => {
   const { mobilevalue, onMobileValueChange } = props
   const handleChange: any = (newValue: string, info: MuiTelInputInfo) => {
-    console.log(info)
     onMobileValueChange(newValue)
   }
 

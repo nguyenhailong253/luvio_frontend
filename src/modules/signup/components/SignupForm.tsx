@@ -17,6 +17,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import React from 'react'
 import DATE_FORMAT from '../../../common/constants'
 import Copyright from '../../../components/Copyright'
+import EmailInput from '../../../components/EmailInput'
 import MobilePhoneInput from '../../../components/MobilePhoneInput'
 import type { Nullish } from '../../../common/types'
 import type { SignupFormProps } from '../types'
@@ -96,15 +97,9 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
 
   const emailComponent = (
     <Grid item xs={12}>
-      <TextField
-        required
-        fullWidth
-        id="email"
-        label="Email Address"
-        name="email"
-        autoComplete="email"
-        value={email}
-        onChange={e => { setEmail(e.target.value) }}
+      <EmailInput
+        email={email}
+        onEmailChange={setEmail}
       />
     </Grid>
   )
