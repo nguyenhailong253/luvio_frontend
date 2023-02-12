@@ -1,4 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Alert from '@mui/material/Alert'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -46,8 +47,17 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
     firstName,
     lastName,
     dateOfBirth,
-    mobile
+    mobile,
+    errorMsg
   } = variables
+
+  const errorAlert = errorMsg !== '' && (
+    <Grid item xs={12}>
+      <Alert variant="outlined" severity="error">
+        {errorMsg}
+      </Alert>
+    </Grid>
+  )
 
   const firstNameComponent = (
     <Grid item xs={12} sm={6}>
@@ -202,6 +212,7 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
           </Typography>
           <Box component="form" noValidate onSubmit={onSubmitClicked} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+              {errorAlert}
               {firstNameComponent}
               {lastNameComponent}
               {usernameComponent}

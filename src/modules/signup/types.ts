@@ -23,6 +23,7 @@ export interface SignupVariableProps {
   lastName: string
   dateOfBirth: Dayjs | Nullish
   mobile: string
+  errorMsg: string
 }
 
 export interface SignupFormProps {
