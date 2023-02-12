@@ -18,7 +18,8 @@ import type { LoginFormProps } from '../types'
 const theme = createTheme()
 
 const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
-  const { onSubmitClicked, email, password, setEmail, setPassword } = props
+  const { variables, onSubmitClicked, setEmail, setPassword } = props
+  const { email, password } = variables
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

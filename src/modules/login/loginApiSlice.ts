@@ -3,20 +3,26 @@ import type { LoginResponse } from './types'
 
 export const loginApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    submit: builder.mutation({
+    login: builder.mutation({
       query: (loginDetails) => ({
         url: '/login/',
         method: 'POST',
         body: { ...loginDetails }
       }),
-      transformResponse: (responseData: LoginResponse) => ({
-        username: responseData.username,
-        token: responseData.token,
-        email: responseData.email,
-        userId: responseData.user_id
+      transformResponse: (response: LoginResponse) => ({
+        username: response.username,
+        token: response.token,
+        email: response.email,
+        userId: response.user_id,
+        firstName: response.first_name,
+        lastName: response.last_name,
+        dateOfBirth: response.date_of_birth,
+        mobile: response.mobile,
+        isActive: response.isActive,
+        isLoggedIn: true
       })
     })
   })
 })
 
-export const { useSubmitMutation } = loginApiSlice
+export const { useLoginMutation } = loginApiSlice
