@@ -10,17 +10,27 @@ const LoginModule: React.FunctionComponent = () => {
   const [username, setUserName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [login, { isLoading, isSuccess, error, isError }] = useLoginMutation()
+  const [errorMsg, setErrorMsg] = useState<string>('')
+  const [login, { isLoading, isSuccess, isError }] = useLoginMutation()
 
   const onSubmitClicked = async (e: FormEvent): Promise<void> => {
     e.preventDefault() // INFO: https://stackoverflow.com/a/50193253/8749888
-    const respone = await login({ username, email, password }).unwrap()
-    dispatch(saveLoggedInUserDetails({ ...respone }))
+    try {
+      const respone = await login({ username, email, password }).unwrap()
+      dispatch(saveLoggedInUserDetails({ ...respone }))
+      setErrorMsg('')
+    } catch (err: any) {
+      if (err.data.detail !== undefined) {
+        setErrorMsg(err.data.detail)
+      } else {
+        setErrorMsg('Something went wrong - please try again!')
+      }
+    }
   }
 
   return (
     <LoginForm
-      variables={{ email, password }}
+      variables={{ email, password, errorMsg }}
       setEmail={setEmail}
       setPassword={setPassword}
       onSubmitClicked={onSubmitClicked}
