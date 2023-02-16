@@ -3,12 +3,9 @@ import Alert from '@mui/material/Alert'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
 import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -16,6 +13,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import DATE_FORMAT from '../../../common/constants'
 import Copyright from '../../../components/Copyright'
 import EmailInput from '../../../components/EmailInput'
@@ -185,7 +183,7 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = (props) => {
   const alreadyHaveAnAccount = (
     <Grid container justifyContent="center">
       <Grid item>
-        <Link href="#" variant="body2">
+        <Link to='/' className='login-redirect'>
           Already have an account? Sign in
         </Link>
       </Grid>
