@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import profileListReducer from '../modules/profile/list/profileListSlice'
 import userReducer from '../modules/user/userSlice'
 import apiSlice from './apiSlice'
 
@@ -7,7 +8,8 @@ import type { ThunkAction, AnyAction } from '@reduxjs/toolkit'
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    user: userReducer
+    user: userReducer,
+    profileList: profileListReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware)
