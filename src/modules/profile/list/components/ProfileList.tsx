@@ -82,28 +82,28 @@ const footers = [
 
 const ProfileList: React.FunctionComponent = () => {
   console.log('test')
+
+  const banner = (
+    <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Typography
+        component="h1"
+        variant="h2"
+        align="center"
+        color="text.primary"
+        gutterBottom
+      >
+          Create a new profile
+      </Typography>
+      <Typography variant="h5" align="center" color="text.secondary" component="p">
+          Create a profile based on the following type to get started with our platform
+      </Typography>
+    </Container>
+  )
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
-      {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" component="p">
-          Quickly build an effective pricing table for your potential customers with
-          this layout. It&apos;s built with default MUI components with little
-          customization.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
+      {banner}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
