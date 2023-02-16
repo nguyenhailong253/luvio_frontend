@@ -8,11 +8,12 @@ import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
+
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Copyright from '../../../components/Copyright'
 import EmailInput from '../../../components/EmailInput'
 import type { LoginFormProps } from '../types'
@@ -57,7 +58,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
     </Grid>
   )
 
-  const rememberMe = (
+  const rememberMe = ( // temporarily not used
     <Grid item xs={12}>
       <FormControlLabel
         control={<Checkbox value="remember" color="primary" />}
@@ -79,9 +80,9 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
     </Grid>
   )
 
-  const forgotPwd = (
+  const forgotPwd = ( // temporarily not used
     <Grid item xs>
-      <Link href="#" variant="body2">
+      <Link to='/' className='forgotPwd'>
         Forgot password?
       </Link>
     </Grid>
@@ -89,7 +90,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
 
   const signup = (
     <Grid item>
-      <Link href="#" variant="body2">
+      <Link to='/signup' className='signup-redirect'>
         {"Don't have an account? Sign Up"}
       </Link>
     </Grid>
@@ -118,11 +119,11 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = (props) => {
               {errorAlert}
               {emailComponent}
               {passwordComponent}
-              {rememberMe}
+              {/* {rememberMe} */}
               {loginButton}
             </Grid>
-            <Grid container>
-              {forgotPwd}
+            <Grid container justifyContent={'center'}>
+              {/* {forgotPwd} */}
               {signup}
             </Grid>
           </Box>
