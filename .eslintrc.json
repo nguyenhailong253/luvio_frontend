@@ -17,6 +17,12 @@
         "react"
     ],
     "rules": {
+        "@typescript-eslint/no-invalid-void-type": [
+            0
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+            0
+        ],
         "@typescript-eslint/no-unused-vars": "off",
         "max-len": [
             "warn",

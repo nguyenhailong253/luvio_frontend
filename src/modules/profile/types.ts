@@ -1,11 +1,25 @@
-import type { Nullish, NumberNullish } from '../../common/types'
-import type { Dayjs } from 'dayjs'
-import type { SetStateAction } from 'react'
+import type { StringNullish } from '../../common/types'
 
-export interface ProfileListResponse {
-  profiles: any[]
-}
+export interface ProfileListResponse extends Array<ProfileResponse> {}
 
 export interface ProfileListState {
-  profiles: any[]
+  profiles: Profile[]
+}
+
+export interface Profile {
+  id: number
+  avatar: StringNullish
+  profilePitch: StringNullish
+  profileUri: StringNullish
+  dateCreated: string
+  profileType: string
+}
+
+export interface ProfileResponse {
+  id: number
+  avatar: StringNullish
+  profile_pitch: StringNullish
+  profile_uri: StringNullish
+  date_created: string
+  profile_type: string
 }
