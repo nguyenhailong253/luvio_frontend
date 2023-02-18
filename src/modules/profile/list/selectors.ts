@@ -1,2 +1,3 @@
 import type { RootState } from '../../../redux/store'
-export const getProfiles = (state: RootState): any[] => state.profileList.profiles
+import type { Profile } from '../types'
+export const getProfiles = (state: RootState): Profile[] => state.profileList.profiles
